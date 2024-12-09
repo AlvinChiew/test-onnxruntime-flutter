@@ -45,8 +45,9 @@ void predict() async {
 
   const assetFileName = 'assets/models/best_model.onnx'; // optset_version=18
   final gameAgent = GameAgent(modelFileName: assetFileName);
-  final output = await gameAgent.predict(input);
-  for (var e in output!) {
+  final prediction = await gameAgent.predict(input);
+  for (var e in prediction!) {
     print(e!.value);
   }
+  print(prediction[0]?.value as List<List<int>>);
 }
